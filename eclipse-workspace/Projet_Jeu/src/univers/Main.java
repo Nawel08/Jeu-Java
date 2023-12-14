@@ -1,6 +1,9 @@
 package univers;
 import univers.Personnage_Joueur;
+import representation.SoundNode;
 import univers.Evenements_1;
+import representation.Event;
+import representation.Node;
 
 public class Main {
 	public static void main (String[] args) {
@@ -8,7 +11,7 @@ public class Main {
 		//On utilise une méthode crée pour afficher l'introduction.
 		String introduction="En se baladant dans un endroit mystérieux, votre personnage actionne sans le vouloir le Temporal Explorer, la machine permettant de voyager dans le temps.";
 	    //On crée une instance de notre classe Personnage joueur pour pouvoir éxécuter les méthodes associées à cette classe.
-		Personnage_Joueur pj= new Personnage_Joueur("test",0,"test"); //Erreur si on crée un constructeur vide, donc on procède ainsi.
+		/*Personnage_Joueur pj= new Personnage_Joueur("test",0,"test"); //Erreur si on crée un constructeur vide, donc on procède ainsi.
 		pj.Intro(introduction);
 		
 		//Création d'une instance de la classe Personnage_Non_Joueur.
@@ -49,8 +52,17 @@ public class Main {
 		Evenements_4 e4= new Evenements_4();
 		e4.afficherEtapes();
 		e4.Issue();
+		*/
 		
-	
+		//POUR LE SON
+		Event baseNode = new Node(introduction, 0);
+
+        // Ajoutez la fonctionnalité de lecture de son au nœud de base
+        Event soundNode = new SoundNode(baseNode);
+
+        // Affichez le nœud avec la fonctionnalité de son
+        soundNode.display("Data/son.wav");
+        
 	}
 
 }

@@ -1,5 +1,5 @@
 package univers;
-
+import java.util.*;
 /*
 Comme il n'y aura qu'une fée, on aura besoin de créer qu'une instance.
 On utilise donc pour cela le design pattern singleton. 
@@ -22,5 +22,16 @@ public class Singleton {
 			instance = new Singleton();
 			return instance;
 	}
+	
+	public String display(String description) {
+		return description;
+	}
+	
+	public static boolean defi1(String question, String reponseCorrecte) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println(question);
+        String reponseUtilisateur = scanner.nextLine();
+        return reponseUtilisateur.equalsIgnoreCase(reponseCorrecte);
+    }
 	
 }

@@ -6,4 +6,5 @@
  *
  */
 module Projet_Jeu {
+	requires java.desktop;
 }

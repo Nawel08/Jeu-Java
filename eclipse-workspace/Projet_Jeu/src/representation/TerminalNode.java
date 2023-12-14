@@ -8,6 +8,10 @@ public class TerminalNode extends Node {
 
 	}
 
+	public TerminalNode() {
+		// TODO Auto-generated constructor stub
+	}
+
 	@Override
 	public void display(String description)
 	{

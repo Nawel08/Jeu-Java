@@ -1,13 +1,10 @@
 package representation;
 import java.util.Scanner;
 
-public abstract class DecisionNode extends Node {
+public class DecisionNode extends Node {
 	
 
-	public DecisionNode(String description, int id )
-	{
-		super (description,id);
-
+	public DecisionNode(){
 	}
 	
 	
@@ -38,11 +35,35 @@ public abstract class DecisionNode extends Node {
 			
 		
 		}
+	public String choix_2_string(String choix1, String choix2) {
+		Scanner scanner = new Scanner(System.in);
 
+		System.out.println("Voici les choix possibles: ");
+        System.out.println("1. " + choix1);
+        System.out.println("2. " + choix2);
+        System.out.println("Entre le numéro de ton choix: ");
 
-	public abstract String nextLine();
+        int userChoice;
 
+        while (true) {
+            try {
+                userChoice = Integer.parseInt(scanner.nextLine());
+                if (userChoice == 1 || userChoice == 2) {
+                    break; // Sortir de la boucle si le choix est valide
+                } else {
+                    System.out.println("Choix invalide. Veuillez choisir 1 ou 2:");
+                }
+            } catch (NumberFormatException e) {
+                System.out.println("Veuillez entrer un nombre valide (1 ou 2):");
+            }
+        }
+
+        return (userChoice == 1) ? choix1 : choix2;
+    }
 
 	}
+
+
+	
 	
 

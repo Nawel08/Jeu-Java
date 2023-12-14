@@ -2,11 +2,15 @@ package representation;
 
 public class InnerNode extends Node {
 	public Node Node1;
-	public Node  Node2;
-	public Node  Node3;
+	public Node Node2;
+	public Node Node3;
 	public Node Node4;
 	
-
+	public InnerNode() {
+		
+	}
+	
+	
 	public InnerNode(Node Node1, Node  Node2,Node Node3,Node Node4, String description, int id) 
 	{
 		super(description,id);
@@ -26,6 +30,11 @@ public class InnerNode extends Node {
 	@Override
 	public void display(String description) {
 		System.out.println(description);
+		
+	}
+	
+	public void display_score(int score) {
+		System.out.println("Ton score est de "+score+" points.");
 		
 	}
 
