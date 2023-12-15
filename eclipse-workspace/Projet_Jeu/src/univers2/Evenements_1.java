@@ -206,6 +206,8 @@ public class Evenements_1 {
     			
     		}
     	}
+    	//Si l'etape avait été réussie.
+    	return true;
 	    
-	} //kk
+	} 
 }
