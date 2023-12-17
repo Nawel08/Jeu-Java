@@ -2,7 +2,8 @@ package univers;
 
 // Cette classe va représenter l'armée de notre personnage principal.
 public class Personnage_Non_Joueur extends Personnage {
-	
+	//Armee ulysse
+	//Armee de troie
 	
 	public int d_mission;
     public boolean mission;
@@ -13,6 +14,15 @@ public class Personnage_Non_Joueur extends Personnage {
 		return "Nous seront ton armée";
 	}
     
+    
+    public Personnage_Non_Joueur(){
+    	
+    }
+    
+    public Personnage_Non_Joueur(String nom, int effectif) {
+        this.nom = nom;
+        this.effectif = effectif;
+    }
     
     public Personnage_Non_Joueur(String prenom, int score, int d_mission, boolean mission) {
         super(prenom, score);
@@ -48,6 +58,31 @@ public class Personnage_Non_Joueur extends Personnage {
 		
 		
 	}
+	
 	public int nouveau_score= Apprecier(mission, score);
+	
+	private String nom;
+    private int effectif;
+
+    public void Armee(String nom, int effectif) {
+        this.nom = nom;
+        this.effectif = effectif;
+    }
+
+    public String getNom() {
+        return nom;
+    }
+
+    public int getEffectif() {
+        return effectif;
+    }
+
+    public void diminuerEffectif(int quantite) {
+        effectif -= quantite;
+    }
+
+    public void augmenterEffectif(int quantite) {
+        effectif += quantite;
+    }
 }
 

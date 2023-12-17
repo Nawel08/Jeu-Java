@@ -1,4 +1,4 @@
-package univers;
+package univers2;
 
 public enum Etapes {
 

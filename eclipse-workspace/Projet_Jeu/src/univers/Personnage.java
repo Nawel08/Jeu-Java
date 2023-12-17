@@ -3,7 +3,9 @@ package univers;
 
 public class Personnage {
 	// On met nos attributs en protected pour qu'ils soient accesible dans les classes filles et dans le meme package.
-	
+	public Personnage() {
+		
+	}
 	protected String prenom;
 	protected String sexe;
 	public Personnage(String prenom, int score, String sexe) {

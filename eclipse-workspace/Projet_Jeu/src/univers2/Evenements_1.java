@@ -209,5 +209,11 @@ public class Evenements_1 {
     	//Si l'etape avait été réussie.
     	return true;
 	    
-	} 
-}
+	} //defi fee
+    
+    int e=1;
+    String mot="etre";
+    public void mot_final() {
+		super.mot_final(mot,e);
+	}
+} //la classe

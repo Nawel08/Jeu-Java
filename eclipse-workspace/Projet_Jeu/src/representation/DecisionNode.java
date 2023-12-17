@@ -59,9 +59,35 @@ public class DecisionNode extends Node {
         }
 
         return (userChoice == 1) ? choix1 : choix2;
-    }
+    } //2 Strings
+	
+	public int choix_2_string(int choix1, int choix2) {
+		Scanner scanner = new Scanner(System.in);
 
-	}
+		System.out.println("Voici les choix possibles: ");
+        System.out.println("Choix 1 : " + choix1);
+        System.out.println("Choix 2 : " + choix2);
+        System.out.println("Entre le numéro de ton choix: ");
+
+        int userChoice;
+
+        while (true) {
+            try {
+                userChoice = Integer.parseInt(scanner.nextLine());
+                if (userChoice == 1 || userChoice == 2) {
+                    break; // Sortir de la boucle si le choix est valide
+                } else {
+                    System.out.println("Choix invalide. Veuillez choisir 1 ou 2:");
+                }
+            } catch (NumberFormatException e) {
+                System.out.println("Veuillez entrer un nombre valide (1 ou 2):");
+            }
+        }
+
+        return (userChoice == 1) ? choix1 : choix2;
+    } //2 int
+
+} //La classe
 
 
 	

@@ -7,53 +7,75 @@ import representation.Node;
 
 public class Main {
 	public static void main (String[] args) {
+
+/*__________________________________________________________
+			INTRODUCTION
+____________________________________________________________*/	
 		
-		//On utilise une méthode crée pour afficher l'introduction.
-		String introduction="En se baladant dans un endroit mystérieux, votre personnage actionne sans le vouloir le Temporal Explorer, la machine permettant de voyager dans le temps.";
-	    //On crée une instance de notre classe Personnage joueur pour pouvoir éxécuter les méthodes associées à cette classe.
-		/*Personnage_Joueur pj= new Personnage_Joueur("test",0,"test"); //Erreur si on crée un constructeur vide, donc on procède ainsi.
-		pj.Intro(introduction);
+		Introduction intro=new Introduction();
 		
-		//Création d'une instance de la classe Personnage_Non_Joueur.
-		Personnage_Non_Joueur pnj= new Personnage_Non_Joueur("", 0, 0, false); //Pareil que précedement, je n'arrive pas à ajouter de constructeur sans argument.
+		intro.display_intro();
+		intro.display_but();
+
 		
-		//Présentation des personnages:
-		//Dans le futur, on veillera à ajouter dans l'appel de chaque méthode l'apparition d'un avatar.
-		pj.Presentation_fee();
-		pnj.Presentation();
 		
-		//On demande au joueur de choisir son personnage
+/*__________________________________________________________
+        		ETAPE 1
+____________________________________________________________*/
+		
+		Etapes etape1 = Etapes.etape_1;
+        etape1.display();
+        
+        Evenements_1 e1= new Evenements_1();
+        
+		
+        Personnage_Joueur pj = new Personnage_Joueur();
 		pj.Genre(); 
 		
-		//On affiche le contenu de l'étape 1:
-		Evenements_1 e1= new Evenements_1();
-		e1.afficherEtapes();
-		
-		//Les méthodes suivantes auront plus de sens lorsque la partie graphique sera terminée.
 		e1.Combat(); //Le joueur combat
 		e1.Defi(); //Le joueur relève le defi
-		e1.Issue(); //La méthode nous indique s'il peut passer au niveau superieur.
+		e1.Issue();
+		        
 		
-		//Bien entendu l'affichage suivant sera conditonné en utilisant les structures conditionnelles vu en cours.
-		//Toutefois, nous attendons pour cela d'avoir finalisé nos méthodes.
-		
-		//On affiche le contenu de l'étape 2:
-		Evenements_2 e2= new Evenements_2();
-		e2.afficherEtapes();
+/*__________________________________________________________
+        		ETAPE 2
+____________________________________________________________*/
+        
+        Etapes etape2 = Etapes.etape_2;
+        etape2.display();
+        
+        Evenements_2 e2= new Evenements_2();
+        
+        e2.afficherEtapes();
 		e2.Attaque();
 		e2.mission();
 		
+/*__________________________________________________________
+        		ETAPE 3 
+____________________________________________________________*/
+        
+        Etapes etape3 = Etapes.etape_3;
+        etape3.display();
 		
-		Evenements_3 e3= new Evenements_3();
-		e3.afficherEtapes();
+        Evenements_3 e3= new Evenements_3();
+        
+        e3.afficherEtapes();
 		e3.ConstructionCheval();
 		e3.Issue();
 		
-		Evenements_4 e4= new Evenements_4();
-		e4.afficherEtapes();
-		e4.Issue();
-		*/
+/*__________________________________________________________
+        		ETAPE 4 
+____________________________________________________________*/
+        
+        Etapes etape4 = Etapes.etape_4;
+        etape4.display();
+        
+        Evenements_4 e4= new Evenements_4();
 		
+        e4.afficherEtapes();
+		e4.Issue();
+		
+		 
 		//POUR LE SON
 		Event baseNode = new Node(introduction, 0);
 

@@ -4,6 +4,15 @@ import java.util.Scanner;
 import representation.InnerNode;
 import representation.TerminalNode;
 
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
+
 public class Main {
 
 	    public static void main(String[] args) {
@@ -61,9 +70,72 @@ public class Main {
 	            }
 	       }
 	        
-	    }
+	    
+	    
+	    Evenements_2 e2= new Evenements_2();
+	    
+	    //Si l'utilisateur passe a l'étape suivante alors on affiche l'intro.
+	    e2.intro();
+	    
+	    String choix_e2=e2.choix("Offrir un cadeau à Cléopatre grâce à la fée", "Résoudre un calcul pour impressioner Cléopatre.");
+	    /*
+	    //En fonction du choix de l'utilisateur on fait appel à la méthode en question, puis à la méthode de dessin.
+	    if (choix_e2=="Offrir un cadeau à Cléopatre grâce à la fée") {
+	    	e2.demanderCadeaux();  //On s'interesse pas a si elle est reussi ou non, on l'appel seulement car tout se passe dans la methode pour pas surcharger le main.
+	    	
+	    	//pour le dernier challenge
+	    		SwingUtilities.invokeLater(() -> {
+	            JFrame frame = new JFrame("Défi des Hiéroglyphes");
+	            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	            frame.setSize(400, 400);
 
-}
+	            DefiPanel defiPanel = new DefiPanel();
+	            frame.add(defiPanel, BorderLayout.CENTER);
+
+	            JButton boutonValider = new JButton("Valider");
+	            boutonValider.addActionListener(e -> {
+	                boolean reussi = defiPanel.validerReponse(); //reussi correspond à l'issu du defi des hieroglyphes
+	                int m = e2.afficherResultat(reussi);
+	                e2.mariage(m);
+	            });
+
+	            frame.add(boutonValider, BorderLayout.SOUTH);
+
+	            frame.setVisible(true);
+	        });
+	    
+	    
+	    }
+	    
+	    else if (choix_e2=="Résoudre un calcul pour impressioner Cléopatre.") {
+	    	e2.Calcul();
+	    	//pour le dernier challenge
+    		SwingUtilities.invokeLater(() -> {
+            JFrame frame = new JFrame("Défi des Hiéroglyphes");
+            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            frame.setSize(400, 400);
+
+            DefiPanel defiPanel = new DefiPanel();
+            frame.add(defiPanel, BorderLayout.CENTER);
+
+            JButton boutonValider = new JButton("Valider");
+            boutonValider.addActionListener(e -> {
+                boolean reussi = defiPanel.validerReponse(); //reussi correspond à l'issu du defi des hieroglyphes
+                int m = e2.afficherResultat(reussi);
+                e2.mariage(m);
+            });
+
+            frame.add(boutonValider, BorderLayout.SOUTH);
+
+            frame.setVisible(true);
+        });
+	    	
+	    }//si c'est le calcul qui a été choisi
+	    */
+	    Evenements_3 e3= new Evenements_3();
+	    e3.playChessOnline("Marc_Antoine2023");
+} //methode pour tester
+} //classe
 
 
 
