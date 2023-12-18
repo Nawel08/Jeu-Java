@@ -1,9 +1,14 @@
 package representation;
 import java.util.Scanner;
 
+import univers.Evenements_1;
+import univers.Evenements_2;
+import univers.Evenements_3;
+import univers.Evenements_4;
+
 public class DecisionNode extends Node {
 	
-
+	TerminalNode tn = new TerminalNode();
 	public DecisionNode(){
 	}
 	
@@ -86,6 +91,36 @@ public class DecisionNode extends Node {
 
         return (userChoice == 1) ? choix1 : choix2;
     } //2 int
+	
+	public boolean appel_fee() {
+	System.out.print("Voulez-vous demander un conseil à Jeniwell ? (oui/non) : ");
+    Scanner scanner = new Scanner(System.in);
+    String choix = scanner.nextLine().toLowerCase();
+
+    if (choix.equals("oui")) {
+    	return true;    	
+       
+    }
+    else {
+    	tn.display("FIN");
+    	return false;
+    }
+	}
+	
+	public boolean appel_fee2() {
+		System.out.print("Acceptes-tu ? (oui/non) : ");
+	    Scanner scanner = new Scanner(System.in);
+	    String choix = scanner.nextLine().toLowerCase();
+
+	    if (choix.equals("oui")) {
+	    	return true;    	
+	       
+	    }
+	    else {
+	    	tn.display("FIN");
+	    	return false;
+	    }
+		}
 
 } //La classe
 

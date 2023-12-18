@@ -1,111 +1,172 @@
 package univers;
+
 import java.util.Scanner;
+import java.util.Random;
+
+import representation.DecisionNode;
 
 public class Evenements_4 extends Evenements {
-
 	
-	public boolean mission_2;
-	public static String enigme;
-	//On fait appel aux caractéristiques de notre etape 4 dans notre enumeration.
-		Etapes etape = Etapes.etape_4;
-		int id = etape.getId();
-	    String description = etape.getDescription();
-	    
-	// On récupère le score de la méthode 3.
-	    Evenements_3 e3= new Evenements_3();
-	    protected int score_4= e3.score_3;
-//On va récupérer les méthodes de la fonction de la méthode Personnage
-	    Personnage p = new Personnage(description, id, description);
-	    
-	    
-		@Override
-		public void afficherEtapes() {
-			// Accès à l'énumération Etapes
-	        
-	        System.out.println("Bienvenu à l'étape: "+id+" \n"+
-	        "Voici sa description: "+description);
-			
-		}
-		//Méthode qui correspond à la mission 2, où le joueur doit répondre à une énigme.
-		public static String mission_2() {
-			enigme="Je suis le début de la fin et la fin du début, Dans l'éternité, je suis toujours dissimulé. Qui suis-je ?";
-			System.out.println(enigme);
-			Scanner scanner = new Scanner(System.in);
-		    System.out.print("Entrez votre réponse : ");
-		return scanner.nextLine().toLowerCase();  // Convertir en minuscules pour être insensible à la casse
-		 }
+	/*__________________________________________
+	  				PIEGE 1
+	 ___________________________________________*/
+	
+	public static boolean labyrintheTemporel(int score) {
+        System.out.println("Pars où décides-tu de passer ?");
+        System.out.println("1. A droite");
+        System.out.println("2. A gauche");
+        
+        Scanner scanner = new Scanner(System.in);
+        int choixUtilisateur;
 
-		    // Méthode pour vérifier si la réponse de l'utilisateur est correcte
-		    public static boolean verifierReponse(String reponseAttendue, String reponseUtilisateur) {
-		        return reponseAttendue.toLowerCase().equals(reponseUtilisateur);
-		    }
-		    
+        do {
+            System.out.print("Entre le numéro de ton choix : ");
+            while (!scanner.hasNextInt()) {
+                System.out.print("Entre un numéro valide : ");
+                scanner.next();
+            }
+            choixUtilisateur = scanner.nextInt();
+        } while (choixUtilisateur < 1 || choixUtilisateur > 2);
+
+        return choixUtilisateur == 1; // Le bon choix mène vers le passé lointain, le mauvais mene aux gardes
+    }
+	
+	
+	/*__________________________________________
+					PIEGE 2
+	___________________________________________*/
+	
+	public static boolean miroirsDuTemps(int score) {
+        System.out.println("Tu te trouve devant deux miroirs temporels mystérieux.");
+        System.out.println("L'un d'eux te ramènera d'où tu viens, tandis que l'autre te permettra de rester dans le présent.");
+        System.out.println("Choisissez le bon miroir pour poursuivre votre quête.");
+
+        Scanner scanner = new Scanner(System.in);
+        Random random = new Random();
+
+        // Sélection aléatoire du bon miroir
+        boolean miroirCorrect = random.nextBoolean();
+
+        System.out.print("Choisis le miroir de votre destinée (Gauche/Droite) : ");
+        String choixUtilisateur = scanner.nextLine().toLowerCase();
+
+        if ((choixUtilisateur.equals("gauche") && miroirCorrect) || (choixUtilisateur.equals("droite") && !miroirCorrect)) {
+            System.out.println("Bien joué ! Tu as choisi le bon miroir et pouvez avancer dans la salle du temps.");
+            return true;
+        } else {
+            System.out.println("Oh non ! Tu as choisi le miroir qui te ramène à votre point de départ.");
+            System.out.println("La quête est compromise. Ulysse perd 10 points.");
+
+
+            return false;
+        }
+	}
+        
+        /*__________________________________________
+  						PIEGE 3
+ 		___________________________________________*/
+        
+        public static boolean portesTemporelles(int score) {
+            System.out.println("Devant toi se trouvent trois salles où il est ecrit 'salle du temps', mais seule une est réellement la salle du temps.");
+            System.out.println("Choisis une porte (1, 2 ou 3) :");
+
+            Scanner scanner = new Scanner(System.in);
+            int choixUtilisateur;
+
+            do {
+                System.out.print("Entre le numéro de la porte choisie : ");
+                while (!scanner.hasNextInt()) {
+                    System.out.print("Entre un numéro valide : ");
+                    scanner.next();
+                }
+                choixUtilisateur = scanner.nextInt();
+            } while (choixUtilisateur < 1 || choixUtilisateur > 3);
+
+            // La porte correcte est choisie aléatoirement
+            int porteCorrecte = new Random().nextInt(3) + 1;
+            return choixUtilisateur == porteCorrecte;
+        }
+        
+        /*___________________________________________________________
+						Reussite des trois pieges
+		____________________________________________________________*/
+        
+        DecisionNode dn= new DecisionNode();
+        Evenements e = new Evenements();
+        
+        public boolean Pieges(boolean piege3, int score) {
+            // Si tu n'es tombé dans aucun piège
+            if (piege3) {
+                score += 20;
+                System.out.println("Félicitations, tu as réussi à arriver devant la salle sans tomber dans les trois pièges.");
+                e.display_score(score);
+                return true;
+            } else {
+                // Si tu es tombé dans un piège mais que ton score est > 50
+                if (score > 10) {
+                    System.out.println("Jeniwell peut te sauver si tu lui donnes 10 points");
+                    boolean appel_fee = dn.appel_fee2();
+                    if (appel_fee) {
+                        score -= 10;
+                        e.display_score(score);
+                        return true;
+                    } else {
+                        tn.display("FIN");
+                        return false;
+                    }
+                } else {
+                    // Si tu as un score < 50.
+                    tn.display("Ton score ne te permet pas de continuer la partie.");
+                    return false;
+                }
+            }
+        }
+
+   
+        
+        /*___________________________________________________________
+  				Dechiffrement du code pour entrer dans la salle
+ 		____________________________________________________________*/
+        
+        
+        private String reponseJoueur(String question) {
+        	System.out.println(question);
+            Scanner scanner = new Scanner(System.in);
+            System.out.print("Entre ta réponse : ");
+            return scanner.nextLine().toLowerCase(); // Assurez-vous que la réponse est en minuscules pour une comparaison insensible à la casse
+        }
+
+        private boolean verifierReponse(String reponseAttendue, String reponseUtilisateur) {
+            return reponseAttendue.equals(reponseUtilisateur);
+        }
+        
+        
+		public boolean Enigme(int score, boolean pieges) {
 		
-		@Override
-		public void Issue() {
-			if(mission) {
-				score_4+=20;
-				System.out.println("Félicitation, vous avez réussi à arriver devant la salle sans tomber dans les trois pièges.");
-				System.out.println("Toutefois, il vous reste à entrer dans la pièce. Pour cela, vous devez répondre à une énigme pour déverouiller les portes.");
+			//Vous n'êtes tombé dans aucun des trois pièges, donc vous pouvez résoudre l'enigme.
+			if(pieges) {
+				
+				System.out.println("Toutefois, il te reste à entrer dans la pièce. Pour cela, tu dois répondre à une énigme pour déverouiller les portes.");
 				String reponseAttendue = "le temps";
-		        String reponseUtilisateur = mission_2();
+				String question="Qu'est ce qu'on attend et qui ne ment ?";
+		        String reponseUtilisateur = reponseJoueur(question);
 
 		        if (verifierReponse(reponseAttendue, reponseUtilisateur)) {
-		            System.out.println("Bravo, la réponse est correcte ! Vous entrez donc dans la salle du Temps.");
-		            System.out.println("Vous réussissez à trouver le chronolètre et vous arretez le temps.");
+		            System.out.println("Bravo, la réponse est correcte ! Tu peux donc entrer donc dans la salle du Temps.");
+		            System.out.println("Tu réussis à trouver le chronomètre et tu arretes le temps.");
 		            //Va afficher si le joueur peut aller dans le prochain univers
-		            if(p.Issue_finale(score_4)) {
-		            	System.out.println("VOUS AVEZ GAGNE");
-		            }
-		            else {
-		            	System.out.println("La partie est terminée");
-		            }
+		            return true;
 		            
 		        } else {
-		            System.out.println("Dommage, la réponse est incorrecte. La partie est terminée");
+		            tn.display("Dommage, la réponse est incorrecte. La partie est terminée");
+		            return false;
 		        }
 		    }
-			//Si la mission n'est pas réussie, vous êtes tombé danns au moins l'un des trois pièges.
 			else {
-				score_4 -=10;
-				if(p.Issue_finale(score_4)) {
-	            	System.out.println("Votre score vous permet de ne pas mourrir, si vous accepter de perdre 20 points.");
-	            	score_4 -=20;
-	            	System.out.println("Vous avez maintenant un score de: " + score_4 +"Vous pouvez donc retenter l'itinéraire pour aller vers la salle du temps.");
-	            	//S'il a réussi les trois pieges
-	            	if(mission) {
-	            		score_4+=10;
-	            		String reponseAttendue = "le temps";
-	    		        String reponseUtilisateur = mission_2();
-	    		        //Il doit ensuite trouver la réponse à l'énigme. Attention on veillera à ce que l'énigme ne soit pas la même que precedemment, mais soit plus dure.
-	    		        if (verifierReponse(reponseAttendue, reponseUtilisateur)) {
-	    		            System.out.println("Bravo, la réponse est correcte ! Vous entrez donc dans la salle du Temps.");
-	    		            System.out.println("Vous réussissez à trouver le chronolètre et vous arretez le temps.");
-	    		            //Va afficher si le joueur peut aller dans le prochain univers
-	    		            if(p.Issue_finale(score_4)) {
-	    		            	System.out.println("VOUS AVEZ GAGNE");
-	    		            }
-	    		            else {
-	    		            	System.out.println("La partie est terminée");
-	    		            }
-	    		            
-	    		        } else {
-	    		            System.out.println("Dommage, la réponse est incorrecte. La partie est terminée");
-	    		        }
-	            		
-	            	}
-	            }
-	            else {
-	            	System.out.println("La partie est terminée");
-	            	
-	            }
-				
-			}
+				tn.display("Se voyage s'arrête ici pour toi..");
+				return false;
 			}
 			
-			
-			
-		
+		}
 	
-
 }

@@ -17,6 +17,7 @@ public class TerminalNode extends Node {
 	{
 		System.out.println(description);
 
+
 	}
 
 	

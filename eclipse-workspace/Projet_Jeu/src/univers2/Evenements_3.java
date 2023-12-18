@@ -75,4 +75,8 @@ public class Evenements_3 {
         return jsonResponse.contains("\"result\": \"win\"");
     }
 
-}
+    
+    public void phrase_finale() {
+    	
+    }
+} //De la classe
