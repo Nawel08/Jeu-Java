@@ -1,15 +1,27 @@
 package univers2;
 
+/**
+ * Enumeration des étapes de cet univers. 
+ * @author nawel
+ *
+ */
 public enum Etapes {
 
-		etape_1(1,"Tu pars à la guerre avec ton armée Grecques"), 
-		etape_2(2,"Tu tentes de percer la muraille de Troie en l'attaquant."), 
-		etape_3(3,"Il faut absolument que tu entres dans Troie pour récupérer le chronomètre de la reine Cronos pour arreter le temps et sortir de cet univers. Tu découvres que le seul moyen qui te reste pour entrer dans Troie est de construire un cheval."), 
-		etape_4(4,"Vous simulez que ce cadeau vient des Grecques, les troyiens n'y voit que du feu et font entrer le cheval dans Troie. Une fois la nuit tombée, vous sortez. Vous entrez dans le chateau. Vous devez trouver le chronomètre de Cronos. Un itinéraire vous guidera. Sur le chemin, vous ferez attention à ne pas tomber dans les trois pièges.");
-
+		etape_1(1,"Tu dois attirer l'attention de Cléopatre."), 
+		
+		etape_2(2,"Maintenant que tu as réussi à te faire remarquer par Cléopatre, tu dois te marier avec elle. "
+				+ "Durant cet étape tu vas devoir gagner le maximum de points pour qu'elle accepte de se marier avec toi."), 
+		etape_3(3,"Octave ne t'apprécie pas, s'il parvient à te battre alors tu mourras et Cléopatre aussi."
+				+ "Pour éviter cela, tu dois le battre."); 
+		
 		private int id;
 		private String description;
 
+		/**
+		 * Constructeur de l'enumeration
+		 * @param id: id de l'étape
+		 * @param description
+		 */
 		Etapes(int id, String description) {
 			this.id=id;
 			this.description= description;
@@ -29,7 +41,7 @@ public enum Etapes {
 	    	System.out.println(getDescription());
 	    }
 		
-		//NB la méthode Etapes.name() renverra le nom de nos enumerations.
+
 	
 
 }

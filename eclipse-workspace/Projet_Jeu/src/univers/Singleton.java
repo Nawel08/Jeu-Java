@@ -1,34 +1,61 @@
 package univers;
 import java.util.*;
-/*
-Comme il n'y aura qu'une fée, on aura besoin de créer qu'une instance.
-On utilise donc pour cela le design pattern singleton. 
-*/
+
+
+/**
+ * Comme il n'y aura qu'une fée, on aura besoin de créer qu'une instance.
+ * On utilise donc pour cela le design pattern singleton. 
+ * @author nawel
+ *
+ */
 public class Singleton {
 	
+	/**
+	 * Chaîne de caractère static et finale qui correspond à la description de la fée Jeniwell.
+	 */
 	public static final String description = 
 	"Je m'appelle Jeniwell, je  t'accompagne dans ce fabuleux voyage dans le temps. "+
 	"Lorsque tu échoueras les missions, je serais à tes côtés pour te redonner une chance. Mais attention a toujours maintenir un score >0, sinon je ne pourrais plus t'aider :(";
 	
 
 	private static Singleton instance = null;
-	//retourne l'unique instance de la classe.
+	
+	/**
+	 * Méthode statique qui permet d'obtenir l'instance de la classe.
+	 * @return retourne l'unique instance de la classe.
+	 */
 	public static Singleton getInstance() {
 		if (instance == null)
 			instance = new Singleton();
 			return instance;
 	}
 	
+	/**
+	 * Affichage de la description
+	 * @param description
+	 * @return on renvoie la descrption passée en parametre.
+	 */
 	public String display(String description) {
 		return description;
 	}
 	
+	/**
+	 * Permet de tester si le joueur répond correctement à la question posée.
+	 * @param question: question qui va être posée
+	 * @param reponseCorrecte: la réponse correcte à cette question.
+	 * @return on renvoi true si le joueur a donné la bonne réponse, false sinon.
+	 */
 	public static boolean defi1(String question, String reponseCorrecte) {
         Scanner scanner = new Scanner(System.in);
         System.out.println(question);
         String reponseUtilisateur = scanner.nextLine();
         return reponseUtilisateur.equalsIgnoreCase(reponseCorrecte);
     }
+	
+	/**
+	 * Permet de jouer à un jeu où il faut trouver des paires.
+	 * @return on renvoi true si le défi est réussi, false sinon.
+	 */
 	public static boolean defi_e1() {
         System.out.println("Ulysse a été blessé! La fée magique, Jeniwell, propose de relever un défi pour le guérir.");
         System.out.println("Défi de la fée magique : Retrouvez les paires de cartes identiques pour obtenir la guérison.");
@@ -39,6 +66,10 @@ public class Singleton {
         return reussi;
     }
 
+	/**
+	 * Méthode qui contient le jeu où il faut retrouver les paires.
+	 * @return renvoie vrai si toutes les paires sont trouvées, false sinon.
+	 */
     private static boolean jeuDeMemoire() {
         // Cartes du jeu de mémoire
         
@@ -94,7 +125,11 @@ public class Singleton {
         return false;
     }
     
-
+    /**
+     * Affiche les cartes selon l'avancé du joueur, ? pour celle non découvertes, et leur valeurs pour celle trouvées.
+     * @param cartes : toutes les cartes.
+     * @param cartesRetournees : les cartes trouvées.
+     */
 
     private static void afficherCartes(String[] cartes, boolean[] cartesRetournees) {
         System.out.println("Cartes :");
@@ -107,6 +142,12 @@ public class Singleton {
         }
         System.out.println();
     }
+    
+    /**
+     * Permet de vérifier que toutes les paires ont été trouvées
+     * @param cartesRetournees : les cartes trouvées par le joueur.
+     * @return: true si toutes les  cartes du jeu ont été trouvées, false sinon.
+     */
 
     private static boolean toutesPairesTrouvees(boolean[] cartesRetournees) {
         for (boolean retournee : cartesRetournees) {

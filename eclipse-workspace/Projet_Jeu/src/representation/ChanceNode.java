@@ -87,7 +87,7 @@ public class ChanceNode extends Node
 			System.out.println("Felicitation tu as réussi à survivre.");
 			//Il peut passer à l'etape suivante.
 			//on met à jour la valeur qui permet de passer à l'étape 2.
-			p_2=true;
+			
 		}
 		
 		if(mission==false) {
@@ -107,6 +107,6 @@ public class ChanceNode extends Node
 			}	
 	}	
 		
-}
+	}
  
 }

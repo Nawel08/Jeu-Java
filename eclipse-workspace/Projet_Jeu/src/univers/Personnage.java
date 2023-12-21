@@ -15,22 +15,29 @@ public class Personnage {
 		
 	}
 
-	protected int score1; //le nouveau score pour les cas ci dessous:
-	public int Apprecier(boolean mission,int score) {
+	
+	
+	/**
+	 * Méthode qui nous permet de vérifier que notre score est toujours compris dans l'intervalle [0,100]
+	 * @param score: le score actuel du joueur
+	 * @return elle retourne le score du joueur non modifié (si dans l'intervalle) sinon retourne 0 ou 100 (selon le cas).
+	 */
+	public int Apprecier(int score) {
 		//Deja il faut borner notre score
 		
 		if(score<0 || score>100) {
 			if(score<0) {
 				
 				System.out.println("Ton score ne pouvant être négatif, la partie est terminé./r /n"+
-				"Score: "+score1);
-				return (score1=0);
+				"Score: "+score);
+				return (score=0);
 				}
 
 			else {
 				
-				System.out.println("Ton score ne pouvant depasser 100, la partie est terminé./r /n"+ "FELICITATION /r /n" + "Score: "+score1);
-				return (score1=100);
+				System.out.println("Ton score ne pouvant depasser 100, la partie est terminé./r /n"+ "FELICITATION /r /n" + "Score: "+score);
+				return (score=100);
+				
 		}
 		
 		

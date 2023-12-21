@@ -8,17 +8,23 @@ import representation.InnerNode;
 import representation.DecisionNode;
 
 import java.util.Scanner;
+
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
+
+import java.io.IOException;
 import java.util.Random;
 
 public class Main {
 	
-	public static void main (String[] args) {
+	public static void main (String[] args) throws LineUnavailableException, IOException, UnsupportedAudioFileException {
 
 		Singleton fee=new Singleton();
 		TerminalNode tn= new TerminalNode();
 		InnerNode in= new InnerNode();
 		Evenements e = new Evenements();
 		DecisionNode dn = new DecisionNode();
+		SoundNode son = new SoundNode();
 /*__________________________________________________________
 			INTRODUCTION
 ____________________________________________________________*/	
@@ -54,6 +60,7 @@ ____________________________________________________________*/
         boolean ulysseBlesse = false;
         boolean etape_s=false;
         for (Guerre etape : etapes) {
+        	son.playMusic("C:/Users/nawel/Downloads/Combat_epee.wav");
             etape.display();
 
             if (ulysseBlesse) {

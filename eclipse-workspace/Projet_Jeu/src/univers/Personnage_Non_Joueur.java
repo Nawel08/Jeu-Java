@@ -1,14 +1,21 @@
 package univers;
 
-// Cette classe va représenter l'armée de notre personnage principal.
+/**
+ * Dans cette classe on retrouvera tous les personnages non principaux
+ * @author nawel
+ *
+ */
 public class Personnage_Non_Joueur extends Personnage {
-	//Armee ulysse
-	//Armee de troie
+
 	
 	public int d_mission;
     public boolean mission;
     public int nouveau_score1;
     
+    /**
+     * Méthode de présentation pour l'armée d'Ulysse.
+     * @return
+     */
     public String Presentation() {
 		
 		return "Nous seront ton armée";
@@ -18,7 +25,11 @@ public class Personnage_Non_Joueur extends Personnage {
     public Personnage_Non_Joueur(){
     	
     }
-    
+    /**
+     * Constrcueur de la classe
+     * @param nom: nom du personnage non joueur.
+     * @param effectif, effectif (ex: armée..)
+     */
     public Personnage_Non_Joueur(String nom, int effectif) {
         this.nom = nom;
         this.effectif = effectif;
@@ -28,7 +39,7 @@ public class Personnage_Non_Joueur extends Personnage {
         super(prenom, score);
         this.d_mission = d_mission;
         this.mission = mission;
-        this.nouveau_score1 = Apprecier(mission, d_mission);
+        this.nouveau_score1 = Apprecier(d_mission);
     }
 
 	
@@ -45,15 +56,27 @@ public class Personnage_Non_Joueur extends Personnage {
     public String getNom() {
         return nom;
     }
-
+    
+	/**
+	 * Getter pour recuperer l'effectif
+	 * @return: le nombre qui correspond à l'effectif
+	 */
     public int getEffectif() {
         return effectif;
     }
 
+    /**
+     * Méthode qui permet de réduire l'effectif par une quantité donnée
+     * @param quantite, quantité qu'on doit enlever à l'effectif.
+     */
     public void diminuerEffectif(int quantite) {
         effectif -= quantite;
     }
 
+    /**
+     * Méthode qui permet d'augmenter l'effectif par une quantité donnée
+     * @param quantite, quantité qu'on doit ajouter à l'effectif.
+     */
     public void augmenterEffectif(int quantite) {
         effectif += quantite;
     }

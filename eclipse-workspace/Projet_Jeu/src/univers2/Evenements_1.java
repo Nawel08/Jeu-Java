@@ -11,7 +11,8 @@ import univers.Singleton;
 //Classe qui correspond à l'evenement 1, on y retrouvera toutes les méthodes nécessaires.
 public class Evenements_1 {
 	
-	static int score;
+	
+
 	static boolean etape_suivante;
 	String decision;
 	static boolean etape_suivante_2;
@@ -19,9 +20,15 @@ public class Evenements_1 {
 	static Singleton fee=new Singleton();
 	static TerminalNode tn= new TerminalNode();
 	
-	//Méthode grâce à laquelle l'utilisateur va faire le choix entre les deux options 
-	//qui s'offrent à lui pour se faire remarquer par cléopatre.
-	//Pour cela, on va utiliser la méthode disponible dans la classe DecisionNode
+	
+	/**
+	 * Méthode grâce à laquelle l'utilisateur va faire le choix entre les deux options 
+	 * qui s'offrent à lui pour se faire remarquer par cléopatre.
+	 * Pour cela, on va utiliser la méthode disponible dans la classe DecisionNode
+	 * @param s1 : choix 1
+	 * @param s2 : choix 2
+	 * @return, on retourne le choix du joueur.
+	 */
 	public String choix(String s1, String s2) {
 		DecisionNode decision1= new DecisionNode();
 		decision=decision1.choix_2_string(s1,s2); //on fait appel à la méthode dans decision node qui choisi entre 2 string.
@@ -31,9 +38,14 @@ public class Evenements_1 {
 	public Evenements_1(){
 		
 	}
+	
+	/**
+	 * Méthode qui va permettre que le combat se déroule.
+	 * @param score, le score actuel du joueur.
+	 * @return un boolean qui vaut true si Ulysse à gagné le combat et false sinon.
+	 */
 	 
-	//Méthode qui va permettre que le combat se déroule.
-    public static boolean combat() {
+    public static boolean combat(int score) {
     	//On commence par instancier ce dont on va avoir besoin
     	Scanner scanner = new Scanner(System.in);
         Random random = new Random();
@@ -54,6 +66,8 @@ public class Evenements_1 {
             // Vérification si l'adversaire est vaincu
             if (pointsDeVieAdversaire <= 0) {
                  System.out.println("Vous avez vaincu l'adversaire!");
+                 score+=20;
+                 System.out.println("Score : "+score);
                  return true; // Le personnage a gagné le combat
             }
 
@@ -88,8 +102,13 @@ public class Evenements_1 {
         
     }
 
-     //Méthode pour simuler le vol du stand
-     public static boolean volerStand() {
+    /**
+     * Méthode pour simuler le vol du stand
+     * @param score, score actuel
+     * @return, true si le vol a bien eu lieu, false sinon.
+     */
+     
+     public static boolean volerStand(int score) {
     	 Scanner scanner = new Scanner(System.in);
         	
     	 System.out.println("Une exposition est prévue dans le palais. Vous trouvez un moyen de vous y introduire.");
@@ -105,6 +124,8 @@ public class Evenements_1 {
          // Affichage du résultat du vol
          if (volReussi) {
         	  System.out.println("Le vol est un succès!");
+        	  score+=20;
+              System.out.println("Score : "+score);
         	  etape_suivante=true; //Il peut donc passer à l'etape suivante.
          } else {
         	    System.out.println("Votre tentative de vol a échoué.");
@@ -115,8 +136,17 @@ public class Evenements_1 {
      }
        
         	
-      // Méthode pour simuler la rencontre avec Cléopâtre
-      public static boolean cleopatreRencontre(boolean etape_suivante) {
+     /**
+      * Méthode pour simuler la rencontre avec Cléopâtre
+      * @param etape_suivante, si l'étape précédente a été réussie.
+      * @param score, score actuel
+      * @return, true si la rencontre s'est bien passé, false sinon.
+      * NB: la recontre se passe bien si: 
+      * 1) Il a su répondre juste aux <b> trois </b> questions
+      * 
+      */
+      
+      public boolean cleopatreRencontre(boolean etape_precedente, int score) {
         	 InnerNode innerNode = new InnerNode();
         	 Scanner scanner = new Scanner(System.in);
         	
@@ -130,12 +160,14 @@ public class Evenements_1 {
         	 
         	    
         	 //Ne se deroule que si le vol du stand a été une réussite.
-        	 if(etape_suivante) {
+        	 if(etape_precedente) {
         	    	
         		// Simulation de trois questions posées par Cléopâtre en faisant appel a la méthdoe definie un peu plus bas. 
         	    if (defiCleopatre("Qu'est-ce que cet objet?", "un scarabé")) { //on passe en argument la question et la bonne reponse
         	        if (defiCleopatre("A quoi sert cet objet (en un mot) ?", "Protéger")) {
         	            if (defiCleopatre("Sur cet eventail, ce sont des plumes de quel oiseau ?", "Autruche")){
+        	            	score+=20;
+        	                System.out.println("Score : "+score);
         	            	innerNode.display("Fecilictation ! Tu passes à l'étape 2");
         			        innerNode.display("Appuie sur Entrée pour continuer...");
         			        scanner.nextLine(); 
@@ -161,8 +193,15 @@ public class Evenements_1 {
 
        }
 
-           
-    // Méthode pour simuler les questions posées par Cléopâtre
+    /**
+     * Méthode pour simuler les questions posées par Cléopâtre
+     * @param question
+     * @param reponseCorrecte
+     * @return true si :
+     * 1) Le joueur avait bien répondu aux trois questions
+     * 2) S'il n'a pas répondu correctement aux trois questions <b> mais </b> qu'il a réussi le defi de la fée Jeniwell.
+     */
+    // 
     public static boolean defiCleopatre(String question, String reponseCorrecte) {
         InnerNode innerNode = new InnerNode();
         Scanner scanner = new Scanner(System.in);
@@ -178,13 +217,17 @@ public class Evenements_1 {
             scanner.nextLine();
 
             // Appel à la méthode defi1 de la classe Fee
-            reponseCorrecteObtenue = fee.defi1("", "Réponse correcte de Jeniwell");
+            reponseCorrecteObtenue = fee.defi1("question", "Réponse correcte de Jeniwell");
         }
 
         return reponseCorrecteObtenue;
     }
     
-    //Méthode à laquelle on fait appel si le joueur n'a pas réussi toutes les questions
+    /**
+     * Méthode à laquelle on fait appel si le joueur n'a pas réussi toutes les questions
+     * @return true si le joueur a donné la bonne réponse, false sinon.
+     */
+    
     public static boolean defi_fee() {
     	//On verifie que l'etape n'avait pas été reusi
     	if (etape_suivante_2==false) {
@@ -200,7 +243,7 @@ public class Evenements_1 {
     		}
     		//Sinon, on fait appel à un terminal node.
     		else {
-    			tn.display("La partie est terminée ...");
+    			tn.display("La partie est terminée.");
     			etape2=false;
     			return etape2;
     			
@@ -211,9 +254,5 @@ public class Evenements_1 {
 	    
 	} //defi fee
     
-    int e=1;
-    String mot="etre";
-    public void mot_final() {
-		super.mot_final(mot,e);
-	}
+    
 } //la classe

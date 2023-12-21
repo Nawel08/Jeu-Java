@@ -1,5 +1,10 @@
 package univers;
 
+/**
+ * Enumération du contenu de chacune des étapes (=Evenements_i i=1,2,3,4)
+ * @author nawel
+ *
+ */
 public enum Etapes {
 
 		etape_1(1,"Tu pars à la guerre avec ton armée Grecques"), 
@@ -15,21 +20,32 @@ public enum Etapes {
 			this.description= description;
 			
 		}
-		//Va nous permettre de recuprer l'id
+		
+		/**
+		 * Getter qui nous permet de récupérer l'id
+		 * @return l'id 
+		 */
+		
 		public int getId() {
 	        return id;
 	    }
-		//Va nous permettre de recuperer la description.
+		
+		/**
+		 * Getter qui nous permet de récupérer la description.
+		 * @return la descrption.
+		 */
+
 	    public String getDescription() {
 	        return description;
 	    }
 	    
+	    /**
+	     * Affichage du numéro de l'étape, et de sa description.
+	     */
 	    public void display() {
 	    	System.out.println("Bienvenu à l'étape: "+getId());
 	    	System.out.println(getDescription());
 	    }
-		
-		//NB la méthode Etapes.name() renverra le nom de nos enumerations.
 	
 
 }

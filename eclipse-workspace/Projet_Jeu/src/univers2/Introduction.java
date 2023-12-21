@@ -6,12 +6,18 @@ package univers2;
 
 public class Introduction {
 	
+	/**
+	 * Le constructeur peut être utilisé pour initialiser la classe si nécessaire
+	 */
 	public Introduction() {
-        // Le constructeur peut être utilisé pour initialiser la classe si nécessaire
+       
     }
 
+	/**
+	 * Affichage de l'introduction a cet univers (contexte + objectif)
+	 */
     public void display() {
-        // Logique pour afficher le contexte et annoncer l'objectif
+
         System.out.println("Bienvenu dans ce nouvel univers !");
         System.out.println("Tu as réussi à vaincre les Troyiens, et à récupérer le chronomètre à la reine Cronos. Felicitation !");
         System.out.println("Mais ce voyage dans le temps n'est pas terminé ...");
@@ -25,6 +31,6 @@ public class Introduction {
         
     }
 
-    // Plus tard j'aimerais ajouter l'apparition d'octave.
+
 }
 

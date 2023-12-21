@@ -9,6 +9,11 @@ public class Evenements {
     
     protected boolean mission;
 
+    /**
+     * Indique à l'utilisateur s'il passe à l'étape suivant ou non.
+     * @param passage: fait référence à la derniere méthode
+     * @return: si la derniere méthode a été réussie on renvoie true, sinon on renvoie false.
+     */
  
 	public boolean Passage(boolean passage) {
 		if (passage) {
@@ -22,6 +27,10 @@ public class Evenements {
 		}	
 	}
 	
+	/**
+	 * Méthode pour afficher le score
+	 * @param score: score du joueur
+	 */
 	public void display_score(int score) {
 		System.out.println("Score : "+score);
 	}

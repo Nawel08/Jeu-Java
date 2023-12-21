@@ -9,14 +9,17 @@ public class Evenements_2 extends Evenements {
 
     Evenements_1 e1 = new Evenements_1();
     
-    //Cette méthode contient le coeur de notre evenements_2.
-    //Elle va faire deviner "cheval de troie" a l'utilisateur.
+    /**
+     * Cette méthode est le coeur de notre classe, Ulysse doit deviner quel est le meilleur moyen d'entrer dans Troie.
+     * @param score, qui correspond au score d'Ulysse.
+     * @return un boolean qui vaut vrai si Ulysse a trouvé le bon mot, et false sinon.
+     */
     public static boolean etape2(int score) {
         System.out.println("Ulysse se rend compte que la meilleure manière d'entrer dans Troie n'est pas de l'attaquer. Il a besoin ton aide pour trouver le bon moyen pour entrer.");
         System.out.println("Tu as trois chances pour trouver le meilleur moyen d'entrer dans Troie.");
 
         // Mot correct
-        String motCorrect = "Cheval de Troie".toLowerCase();
+        final String motCorrect = "Cheval de Troie".toLowerCase();
 
         // Tableau pour stocker les lettres devinées
         char[] lettresDevinées = new char[motCorrect.length()];
@@ -96,7 +99,15 @@ public class Evenements_2 extends Evenements {
     }
 
     
-    //METHODES NECESSAIRES POUR LA METHODE PRECEDENTE.
+    /**
+     * Méthode qui va comparer si l'ensemble des lettres devinées correspond bien au mot.
+     * 
+     * @param proposition, proposition faites par l'utilisateur.
+     * @param motCorrect, fait référence à: final String motCorrect = "Cheval de Troie".toLowerCase();
+     * @param lettresDevinées, tableau où on a stocké les lettres devinées
+     * @return elle retourne un booleen vaut true si la réponse est correcte, et false sinon.
+     * 
+     */
 
     private static boolean verifierMotCorrect(String proposition, String motCorrect, char[] lettresDevinées) {
         if (proposition.length() > motCorrect.length() || proposition.length() < 2) {
@@ -114,7 +125,14 @@ public class Evenements_2 extends Evenements {
         return false;
     }
 
-
+    /**
+     * Vérifie si une lettre a déjà été trouvée parmi les lettres devinées.
+     *
+     * @param lettre la lettre à rechercher.
+     * @param lettresDevinées tableau des lettres devinées.
+     * @return true si la lettre a déjà été trouvée, false sinon.
+     * 
+     */
     private static boolean lettreDejaTrouvee(char lettre, char[] lettresDevinées) {
         for (char lettreDevinee : lettresDevinées) {
             if (lettreDevinee == lettre) {
@@ -124,6 +142,13 @@ public class Evenements_2 extends Evenements {
         return false; // La lettre n'a pas été trouvée
     }
 
+    /**
+     * Affiche le mot en remplaçant les lettres non devinées par des tirets.
+     *
+     * @param motCorrect:  le mot correct à afficher.
+     * @param lettresDevinées: tableau des lettres devinées.
+     */
+    
     private static void afficherMot(String motCorrect, char[] lettresDevinées) {
         System.out.print("Mots : ");
         for (int i = 0; i < motCorrect.length(); i++) {
@@ -139,6 +164,14 @@ public class Evenements_2 extends Evenements {
         System.out.println();
     }
 
+    /**
+     * Met à jour les lettres devinées en fonction de la proposition de l'utilisateur.
+     *
+     * @param motCorrect le mot correct à comparer.
+     * @param lettresDevinées tableau des lettres devinées.
+     * @param proposition la proposition de l'utilisateur.
+     * 
+     */
     private static void mettreAJourLettresDevinées(String motCorrect, char[] lettresDevinées, String proposition) {
         if (proposition.length() == 1) {
             // Proposition d'une lettre
