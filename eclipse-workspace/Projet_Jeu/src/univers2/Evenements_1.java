@@ -9,8 +9,7 @@ import representation.TerminalNode;
 import univers.Singleton;
 
 //Classe qui correspond à l'evenement 1, on y retrouvera toutes les méthodes nécessaires.
-public class Evenements_1 {
-	
+public final class Evenements_1 extends Evenements{
 	
 
 	static boolean etape_suivante;

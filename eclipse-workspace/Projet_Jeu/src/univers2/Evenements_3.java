@@ -10,7 +10,7 @@ import java.net.URL;
 import java.util.Random;
 import java.util.Scanner;
 
-public class Evenements_3 {
+public final class Evenements_3 extends Evenements{
 
     InnerNode in = new InnerNode();
     DecisionNode dn = new DecisionNode();
@@ -28,6 +28,7 @@ public class Evenements_3 {
      * @param s2, choix 2
      * @return, la chaîne de caractère choisie.
      */
+    
     public int choix(String s1, String s2) {
         int choix = dn.choix_2_string_i(s1, s2);
         return choix;

@@ -13,9 +13,6 @@ public class Singleton {
 	/**
 	 * Chaîne de caractère static et finale qui correspond à la description de la fée Jeniwell.
 	 */
-	public static final String description = 
-	"Je m'appelle Jeniwell, je  t'accompagne dans ce fabuleux voyage dans le temps. "+
-	"Lorsque tu échoueras les missions, je serais à tes côtés pour te redonner une chance. Mais attention a toujours maintenir un score >0, sinon je ne pourrais plus t'aider :(";
 	
 
 	private static Singleton instance = null;
@@ -32,11 +29,16 @@ public class Singleton {
 	
 	/**
 	 * Affichage de la description
-	 * @param description
-	 * @return on renvoie la descrption passée en parametre.
+	 * 
+	 * @return on renvoie la descrption 
 	 */
-	public String display(String description) {
-		return description;
+	public String display() {
+		return "Je m'appelle Jeniwell, je  t'accompagne dans ce fabuleux voyage dans le temps. "+
+				"Lorsque tu échoueras les missions, je serais à tes côtés pour te redonner une chance.";
+	}
+	
+	public String display(String str) {
+		return str;
 	}
 	
 	/**
@@ -149,6 +151,7 @@ public class Singleton {
      * @return: true si toutes les  cartes du jeu ont été trouvées, false sinon.
      */
 
+    
     private static boolean toutesPairesTrouvees(boolean[] cartesRetournees) {
         for (boolean retournee : cartesRetournees) {
             if (!retournee) {

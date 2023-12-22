@@ -5,7 +5,7 @@ package univers;
  * @author nawel
  *
  */
-public class Personnage_Non_Joueur extends Personnage {
+public final class Personnage_Non_Joueur extends Personnage {
 
 	
 	public int d_mission;
@@ -28,7 +28,7 @@ public class Personnage_Non_Joueur extends Personnage {
     /**
      * Constrcueur de la classe
      * @param nom: nom du personnage non joueur.
-     * @param effectif, effectif (ex: armée..)
+     * @param effectif, effectif (notamment pour les armées)
      */
     public Personnage_Non_Joueur(String nom, int effectif) {
         this.nom = nom;
@@ -43,8 +43,7 @@ public class Personnage_Non_Joueur extends Personnage {
     }
 
 	
-	
-	
+
 	private String nom;
     private int effectif;
 

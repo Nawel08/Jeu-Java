@@ -1,10 +1,10 @@
 package representation;
 import java.util.Scanner;
 
-import univers.Evenements_1;
-import univers.Evenements_2;
-import univers.Evenements_3;
-import univers.Evenements_4;
+
+import univers.Evenements_2_u1;
+import univers.Evenements_3_u1;
+import univers.Evenements_4_u1;
 
 public class DecisionNode extends Node {
 	
@@ -79,7 +79,7 @@ public class DecisionNode extends Node {
         while (true) {
             try {
                 userChoice = Integer.parseInt(scanner.nextLine());
-                if (userChoice == 1 || userChoice == 2) {
+                if (userChoice == 0 || userChoice == 1) {
                     break; // Sortir de la boucle si le choix est valide
                 } else {
                     System.out.println("Choix invalide. Veuillez choisir 1 ou 2:");
@@ -89,7 +89,7 @@ public class DecisionNode extends Node {
             }
         }
 
-        return (userChoice == 1) ? choix1 : choix2;
+        return (userChoice == 0) ? choix1 : choix2;
     } //2 int
 	
 	

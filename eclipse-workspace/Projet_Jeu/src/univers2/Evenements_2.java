@@ -23,7 +23,7 @@ import representation.TerminalNode;
  * @author nawel
  *
  */
-public class Evenements_2 {
+public final class Evenements_2 extends Evenements{
 
 	//On affiche le but de l'etape grace à une enumeration
 	
@@ -48,8 +48,9 @@ public class Evenements_2 {
 	 * soit il est au goût de la reine, soit il ne lui convient pas.
 	 * (Il ne peut pas savoir en avance)
 	 * @param score, score actuel du joueur.
+	 * @return true si le cadeau est le bon, false s'il est tombé sur le mauvais cadeau.
 	 */
-	public void demanderCadeaux(int score) {
+	public boolean demanderCadeaux(int score) {
         Scanner scanner = new Scanner(System.in);
         Random random = new Random();
 
@@ -67,11 +68,12 @@ public class Evenements_2 {
             cadeau = scanner.nextInt();
         }     
          // 0 pour le cadeau bien, 1 pour le cadeau nulmp
-        //On rajoutera a cet endroit l'apparission de deux cadeaux.
+        
 	        if (cadeau==0) {
 	        		score+=10;
 	        		System.out.println("Felicitation tu as obtenu le bon cadeau, tu gagnes 10 points !");
 	        		System.out.println("Ton score est de "+ score+ " points");
+	        		return true;
 	        	}
 	        	//Il a choisi le cadeau nul
 	        	else {
@@ -79,6 +81,7 @@ public class Evenements_2 {
 	        		score-=10;
 	        		System.out.println("Malheuresement tu n'as pas obtenu le bon cadeau, tu perds 10 points ...");
 	        		System.out.println("Ton score est de "+ score+ " points");
+	        		return false;
 	        	}	            
 	                
         
@@ -89,8 +92,9 @@ public class Evenements_2 {
 	 * Si le joueur choisis d'impressionner Cléopatre en resolvant un calcul, 
 	 * Le calcul apparait, il doit donner la bonne réponse.
 	 * @param score, score du joueur.
+	 * @return true s'il a obtenu le bon resultat, false sinon.
 	 */
-	public void Calcul(int score) {
+	public boolean Calcul(int score) {
 		System.out.println("Cléopatre est très intelligente, et elle aime les gens intelligent.");
 		System.out.print("Tu dois répondre correctement à ce calcul:  ");
 		System.out.println("24678-9879");
@@ -104,6 +108,7 @@ public class Evenements_2 {
 			System.out.println("Felicitation c'est la bonne réponse !");
 			System.out.println("Ton score augmente de 10 points");
 			System.out.println("Score: "+score+" points.");
+			return true;
 			
 		}
 		else {
@@ -111,6 +116,7 @@ public class Evenements_2 {
 			System.out.println("Ce n'était pas la bonne réponse ...");
 			System.out.println("Ton score perd 10 points");
 			System.out.println("Score: "+score+" points.");
+			return false;
 		}
 	
 	} //fermeture de la méthdoe calcul
@@ -127,19 +133,12 @@ public class Evenements_2 {
 
 	    if (reussi) {
 	        finalScore += 20;
-	        final int afficheScore = finalScore;  // Variable locale finale pour usage dans la lambda
-	        SwingUtilities.invokeLater(() -> {
-	            JOptionPane.showMessageDialog(null, "Félicitations ! Tu as réussi le Défi des Hiéroglyphes.");
-	            JOptionPane.showMessageDialog(null, "Ton score est désormais de " + afficheScore + " points.");
-	        });
+	        
 	        return finalScore;
 	    } else {
 	        finalScore -= 20;
-	        final int afficheScore = finalScore;  // Variable locale finale pour usage dans la lambda
-	        SwingUtilities.invokeLater(() -> {
-	            JOptionPane.showMessageDialog(null, "Dommage ! Tu n'as pas réussi le Défi des Hiéroglyphes.");
-	            JOptionPane.showMessageDialog(null, "Ton score est désormais de " + afficheScore + " points.");
-	        });
+	        
+	        
 	        return finalScore;
 	    }
 	}
@@ -165,6 +164,11 @@ public class Evenements_2 {
 	    	mariage=true;
 	    	return mariage;
 	    }
+	}
+
+	int score;
+	public Integer getScore() {
+		return score;
 	} 
 	
 } //de la classe

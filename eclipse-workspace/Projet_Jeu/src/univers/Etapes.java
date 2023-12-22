@@ -15,7 +15,7 @@ public enum Etapes {
 		private int id;
 		private String description;
 
-		Etapes(int id, String description) {
+		private Etapes(int id, String description) {
 			this.id=id;
 			this.description= description;
 			
